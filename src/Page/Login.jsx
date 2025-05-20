@@ -1,16 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
+import { AuthContext } from "../provider/AuthContext";
 import { Link } from "react-router";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const { logIn } = useContext(AuthContext);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    logIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        toast("Login successful!");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        toast(`${errorMessage}`);
+      });
+  };
   return (
     <div className="card mx-auto bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mt-30">
       <h2 className=" text-3xl font-bold mx-auto  mt-3 text-blue-400  text-shadow-lg ">
         Login <span className=" text-black ">Now</span>
       </h2>
       <div className="card-body">
-        <form className="fieldset">
+        <form onSubmit={handleLogin} className="fieldset">
           <label className="label">Email</label>
+
           <input
             type="email"
             name="email"
