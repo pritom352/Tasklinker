@@ -1,9 +1,10 @@
 import React from "react";
 import { FaGoogle } from "react-icons/fa";
+import { Link } from "react-router";
 
 const Login = () => {
   return (
-    <div className="card mx-auto bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+    <div className="card mx-auto bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mt-30">
       <h2 className=" text-3xl font-bold mx-auto  mt-3 text-blue-400  text-shadow-lg ">
         Login <span className=" text-black ">Now</span>
       </h2>
@@ -24,16 +25,11 @@ const Login = () => {
           <div>
             <a className="link link-hover">Forgot password?</a>
           </div>
-          <button
-            // onClick={handelGoogleLogin}
-            className=" btn   gap-3 rounded-md  bg-black text-white  font-semibold py-2.5 hover:bg-blue-400 hover:border-none hover:font-bold "
-          >
-            <FaGoogle size={24} /> Login With Google Login
-          </button>
+
           {/* <button className="btn btn-neutral mt-4">Login</button> */}
           <a
             href="#_"
-            class="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-indigo-600 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group w-[100px] mt-2"
+            class="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-indigo-600 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group w-full mt-2"
           >
             <span class="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-blue-400 group-hover:h-full"></span>
             <span class="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
@@ -72,7 +68,19 @@ const Login = () => {
               Login
             </span>
           </a>
+          <button
+            // onClick={handelGoogleLogin}
+            className=" btn   gap-3 rounded-md  bg-black text-white  font-semibold py-2.5 hover:bg-blue-400 hover:border-none hover:font-bold "
+          >
+            <FaGoogle size={24} /> Login With Google Login
+          </button>
         </fieldset>
+        <p className=" mt-1 ">
+          Already have an account ?
+          <Link className=" text-blue-500 hover:text-orange-400" to="/register">
+            Register
+          </Link>
+        </p>
       </div>
     </div>
   );
