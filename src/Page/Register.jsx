@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { FaEye, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { AuthContext } from "../provider/AuthContext";
 
 const Register = () => {
   const { register, googleLogin } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   console.log(register);
   const handleRegister = (e) => {
     e.preventDefault(), console.log("helo");
@@ -17,6 +19,7 @@ const Register = () => {
         // Signed up
         const user = userCredential.user;
         console.log(user);
+        navigate("/");
 
         toast("Login successful!");
         // ...
@@ -32,6 +35,7 @@ const Register = () => {
     googleLogin()
       .then((result) => {
         const user = result.user;
+        navigate("/");
         toast("Login successful!");
       })
       .catch((error) => {

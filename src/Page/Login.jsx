@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../provider/AuthContext";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const { logIn } = useContext(AuthContext);
+  const { logIn, googleLogin } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -13,11 +14,25 @@ const Login = () => {
     logIn(email, password)
       .then((result) => {
         const user = result.user;
+        navigate("/");
         toast("Login successful!");
       })
       .catch((error) => {
         const errorMessage = error.message;
         toast(`${errorMessage}`);
+      });
+  };
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        const user = result.user;
+        navigate("/");
+        toast("Login successful!");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        toast(`${errorMessage}`);
+        // ...
       });
   };
   return (
@@ -91,7 +106,7 @@ const Login = () => {
           </button>
         </form>
         <button
-          // onClick={handelGoogleLogin}
+          onClick={handleGoogleLogin}
           className=" btn   gap-3 rounded-md  bg-black text-white  font-semibold py-2.5 hover:bg-blue-400 hover:border-none hover:font-bold "
         >
           <FaGoogle size={24} /> Login With Google Login
