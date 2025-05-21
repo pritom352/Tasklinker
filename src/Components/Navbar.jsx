@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, Links, NavLink } from "react-router";
+import { AuthContext } from "../provider/AuthContext";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        toast("Logout successful!");
+      })
+      .catch((error) => {
+        toast(`${error}`);
+      });
+  };
   const links = (
     <div className="flex gap-4 ">
       <NavLink className="hover:text-orange-500" to="/">
@@ -54,9 +66,27 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
+        {user ? (
+          <button
+            onClick={handleLogout}
+            className="relative inline-flex items-center justify-center px-6 py-3 border overflow-hidden font-mono font-medium tracking-tighter hover:text-white  rounded-lg group"
+          >
+            <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-blue-500  rounded-full group-hover:w-56  group-hover:h-56"></span>
+            <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30  bg-gradient-to-b from-transparent via-transparent  "></span>
+            <span className="relative">Logout</span>
+          </button>
+        ) : (
+          <Link to="/login">
+            <button
+              onClick={handleLogout}
+              className="relative inline-flex items-center justify-center px-6 py-3 border overflow-hidden font-mono font-medium tracking-tighter hover:text-white  rounded-lg group"
+            >
+              <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-blue-500  rounded-full group-hover:w-56  group-hover:h-56"></span>
+              <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30  bg-gradient-to-b from-transparent via-transparent  "></span>
+              <span className="relative">Login</span>
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );
