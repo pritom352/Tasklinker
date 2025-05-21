@@ -14,8 +14,8 @@ const Login = () => {
     logIn(email, password)
       .then((result) => {
         const user = result.user;
-        navigate("/");
         toast("Login successful!");
+        navigate("/");
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -26,8 +26,8 @@ const Login = () => {
     googleLogin()
       .then((result) => {
         const user = result.user;
-        navigate("/");
         toast("Login successful!");
+        navigate("/");
       })
       .catch((error) => {
         const errorMessage = error.message;

@@ -5,10 +5,14 @@ import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  console.log(user);
+  // const { email } = user;
+  // console.log(email);
+
   const handleLogout = () => {
     logOut()
       .then(() => {
-        toast("Logout successful!");
+        // toast("Logout successful!");
       })
       .catch((error) => {
         toast(`${error}`);
@@ -66,26 +70,52 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        {user ? (
-          <button
-            onClick={handleLogout}
-            className="relative inline-flex items-center justify-center px-6 py-3 border overflow-hidden font-mono font-medium tracking-tighter hover:text-white  rounded-lg group"
-          >
-            <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-blue-500  rounded-full group-hover:w-56  group-hover:h-56"></span>
-            <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30  bg-gradient-to-b from-transparent via-transparent  "></span>
-            <span className="relative">Logout</span>
-          </button>
-        ) : (
-          <Link to="/login">
-            <button
-              onClick={handleLogout}
-              className="relative inline-flex items-center justify-center px-6 py-3 border overflow-hidden font-mono font-medium tracking-tighter hover:text-white  rounded-lg group"
-            >
+        {/* {user && (
+          <>
+            <img src={user.photoURL} alt="Profile" />
+            
+          </>
+        )} */}
+        {!user ? (
+          <div>
+            <button className="relative mr-2 inline-flex items-center justify-center px-6 py-3 border overflow-hidden font-mono font-medium tracking-tighter hover:text-white  rounded-lg group">
               <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-blue-500  rounded-full group-hover:w-56  group-hover:h-56"></span>
               <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30  bg-gradient-to-b from-transparent via-transparent  "></span>
-              <span className="relative">Login</span>
+              <span className="relative">Register</span>
             </button>
-          </Link>
+
+            <Link to="/login">
+              <button className="relative inline-flex items-center justify-center px-6 py-3 border overflow-hidden font-mono font-medium tracking-tighter hover:text-white  rounded-lg group">
+                <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-blue-500  rounded-full group-hover:w-56  group-hover:h-56"></span>
+                <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30  bg-gradient-to-b from-transparent via-transparent  "></span>
+                <span className="relative">Login</span>
+              </button>
+            </Link>
+          </div>
+        ) : (
+          <div>
+            {user && (
+              <>
+                <div className="relative group mr-2">
+                  <img
+                    className=" rounded-full w-[60px] h-[60px]"
+                    src={user.photoURL}
+                    alt="Profile"
+                  />
+                  <div className="absolute  mb-2 left-1/2 -translate-x-1/2 px-2 py-1  text-white text-xs rounded hidden group-hover:block ">
+                    <button
+                      onClick={handleLogout}
+                      className="relative inline-flex items-center justify-center px-6 py-3 border overflow-hidden font-mono font-medium tracking-tighter hover:text-white  rounded-lg group"
+                    >
+                      <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-blue-500  rounded-full group-hover:w-56  group-hover:h-56"></span>
+                      <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30  bg-gradient-to-b from-transparent via-transparent  "></span>
+                      <span className="relative">Logout</span>
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
         )}
       </div>
     </div>

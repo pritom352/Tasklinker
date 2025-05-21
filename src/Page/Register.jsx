@@ -5,23 +5,33 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../provider/AuthContext";
 
 const Register = () => {
-  const { register, googleLogin } = useContext(AuthContext);
+  const { register, googleLogin, updateUser, setUser, user } =
+    useContext(AuthContext);
   const navigate = useNavigate();
 
   console.log(register);
   const handleRegister = (e) => {
     e.preventDefault(), console.log("helo");
+    const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.currentPassword.value;
+    const photo = e.target.photoURL.value;
     // console.log(email, password);
     register(email, password)
       .then((userCredential) => {
         // Signed up
-        const user = userCredential.user;
-        console.log(user);
+        const users = userCredential.user;
+        updateUser({ displayName: name, photoURL: photo })
+          .then(setUser({ ...user, displayName: name, photoURL: photo }))
+          .catch((error) => {
+            toast(error);
+            setUser(user);
+          });
+
         navigate("/");
 
         toast("Login successful!");
+        console.log(users);
         // ...
       })
       .catch((error) => {

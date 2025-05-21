@@ -13,7 +13,11 @@ export const router = createBrowserRouter([
     Component: MainLayout,
     hydrateFallbackElement: <Loader></Loader>,
     children: [
-      { index: true, Component: Home },
+      {
+        index: true,
+        Component: Home,
+        hydrateFallbackElement: <Loader></Loader>,
+      },
       { path: "/login", Component: Login },
       { path: "/register", Component: Register },
       { path: "/addTask", Component: AddTask },
