@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthContext";
 import { useLoaderData } from "react-router";
 import MyTaskCard from "../Components/MyTaskCard";
@@ -6,8 +6,8 @@ import MyTaskCard from "../Components/MyTaskCard";
 const MyTask = () => {
   const { user } = useContext(AuthContext);
   const myUplodes = useLoaderData();
-  const myData = myUplodes.filter((data) => data.email == user.email);
-  console.log(myData);
+  const myAllData = myUplodes.filter((data) => data.email == user.email);
+  const [myData, setMyData] = useState(myAllData);
   return (
     <div>
       <h1 className=" text-5xl italic font-bold mt-10 mb-2 text-center">
@@ -27,7 +27,13 @@ const MyTask = () => {
           </thead>
           <tbody>
             {myData.map((data, index) => (
-              <MyTaskCard data={data} index={index} key={data._id}></MyTaskCard>
+              <MyTaskCard
+                data={data}
+                myData={myData}
+                setMyData={setMyData}
+                index={index}
+                key={data._id}
+              ></MyTaskCard>
             ))}
           </tbody>
         </table>
