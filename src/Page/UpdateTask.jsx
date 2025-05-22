@@ -1,11 +1,56 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../provider/AuthContext";
+import { useLoaderData } from "react-router";
+import Swal from "sweetalert2";
 
 const UpdateTask = () => {
+  const upDateTask = useLoaderData();
+  console.log(upDateTask);
   const { user } = useContext(AuthContext);
+  const handleUpdateTask = (e) => {
+    e.preventDefault();
+    const task = e.target.Task.value;
+    const category = e.target.Category.value;
+    const descriptionry = e.target.Description.value;
+    const deadline = e.target.Deadline.value;
+    const budget = e.target.Budget.value;
+    const email = e.target.email.value;
+    // console.log(email);
+    const Task = {
+      task,
+      category,
+      descriptionry,
+      deadline,
+      budget,
+      email,
+    };
+    fetch(`http://localhost:3000/tasks/${upDateTask._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(Task),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+
+        if (data.modifiedCount) {
+          Swal.fire({
+            title: "Task added successfully",
+            icon: "success",
+            draggable: true,
+          });
+        }
+        console.log(data);
+      });
+  };
   return (
     <div className="   mx-30 my-20  ">
-      <form className="space-y-4 p-5   rounded-2xl shadow-2xl">
+      <form
+        onSubmit={handleUpdateTask}
+        className="space-y-4 p-5   rounded-2xl shadow-2xl"
+      >
         <div className=" flex justify-between  gap-16">
           <div className="  w-full">
             <label className="label font-bold">Task Title</label>
@@ -13,6 +58,7 @@ const UpdateTask = () => {
               type="text"
               required
               name="Task"
+              defaultValue={upDateTask.task}
               className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
               placeholder="Name"
             />
@@ -22,18 +68,18 @@ const UpdateTask = () => {
             <label className="label font-bold">Category</label>
 
             <select
-              className="select validator  border-0 border-b-2  rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
-              // required
-              // placeholder="Select Category"
+              defaultValue={upDateTask.category}
               name="Category"
+              className="select validator  border-0 border-b-2  rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
             >
-              <option disabled selected></option>
+              {/* <option disabled={true}>Pick a font</option> */}
               <option>Web Development</option>
               <option>Design</option>
               <option>Writing</option>
               <option>Opera</option>
               <option>Marketing</option>
             </select>
+
             <p className="validator-hint">Required</p>
           </div>
         </div>
@@ -42,6 +88,7 @@ const UpdateTask = () => {
 
           <textarea
             name="Description"
+            defaultValue={upDateTask.description}
             className="textarea  border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
             placeholder="Description"
           ></textarea>
@@ -53,6 +100,7 @@ const UpdateTask = () => {
             <input
               type="date"
               name="Deadline"
+              defaultValue={upDateTask.deadline}
               className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
               placeholder="Description"
             />
@@ -62,6 +110,7 @@ const UpdateTask = () => {
 
             <input
               type="number"
+              defaultValue={upDateTask.budget}
               required
               name="Budget"
               className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
