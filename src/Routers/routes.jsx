@@ -7,6 +7,7 @@ import AddTask from "../Page/AddTask";
 import MyTask from "../Page/MyTask";
 import PrivetRoutes from "./PrivetRoutes";
 import Loader from "../Components/Loader";
+import BrowseTasks from "../Page/BrowseTasks";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +22,11 @@ export const router = createBrowserRouter([
       { path: "/login", Component: Login },
       { path: "/register", Component: Register },
       { path: "/addTask", Component: AddTask },
+      {
+        path: "/browseTasks",
+        loader: () => fetch("http://localhost:3000/tasks"),
+        Component: BrowseTasks,
+      },
       {
         path: "/myPostedTask",
         element: (
