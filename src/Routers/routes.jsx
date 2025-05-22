@@ -9,8 +9,9 @@ import PrivetRoutes from "./PrivetRoutes";
 import Loader from "../Components/Loader";
 import BrowseTasks from "../Page/BrowseTasks";
 import TaskDetails from "../Page/TaskDetails";
-import { useContext } from "react";
+
 import { AuthContext } from "../provider/AuthContext";
+import UpdateTask from "../Page/UpdateTask";
 
 // const { user } = useContext(AuthContext);
 export const router = createBrowserRouter([
@@ -54,6 +55,12 @@ export const router = createBrowserRouter([
             <MyTask></MyTask>
           </PrivetRoutes>
         ),
+      },
+      {
+        path: "/updateTask/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/tasks/${params.id}`),
+        Component: UpdateTask,
       },
     ],
   },
