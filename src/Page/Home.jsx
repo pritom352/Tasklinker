@@ -2,6 +2,8 @@ import React from "react";
 import Banner from "../Components/Banner";
 import { useLoaderData } from "react-router";
 import Card from "../Components/Card";
+import CountUp from "react-countup";
+import Coutnup from "../Components/Coutnup";
 
 const Home = () => {
   const tasks = useLoaderData();
@@ -19,6 +21,7 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <Coutnup></Coutnup>
     </div>
   );
 };
