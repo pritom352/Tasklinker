@@ -102,7 +102,7 @@ const Navbar = () => {
                     src={user.photoURL}
                     alt="Profile"
                   />
-                  <div className="absolute  mb-2 left-1/2 -translate-x-1/2 px-2 py-1  text-white text-xs rounded hidden  group-active:block">
+                  <div className=" px-2 py-1  text-white text-xs rounded   ">
                     <button
                       onClick={handleLogout}
                       className="relative inline-flex items-center justify-center px-6 py-3 border overflow-hidden font-mono font-medium tracking-tighter hover:text-white  rounded-lg group"

@@ -5,7 +5,7 @@ const AllTask = ({ task, index }) => {
   console.log(task);
   return (
     <tr>
-      <td>{task._id}</td>
+      <td>{index + 1}</td>
       <td>{task.task}</td>
       <td>{task.category}</td>
       <td>{task.budget}</td>

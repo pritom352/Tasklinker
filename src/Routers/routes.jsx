@@ -9,6 +9,10 @@ import PrivetRoutes from "./PrivetRoutes";
 import Loader from "../Components/Loader";
 import BrowseTasks from "../Page/BrowseTasks";
 import TaskDetails from "../Page/TaskDetails";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthContext";
+
+// const { user } = useContext(AuthContext);
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -23,7 +27,14 @@ export const router = createBrowserRouter([
       },
       { path: "/login", Component: Login },
       { path: "/register", Component: Register },
-      { path: "/addTask", Component: AddTask },
+      {
+        path: "/addTask",
+        element: (
+          <PrivetRoutes>
+            <AddTask></AddTask>
+          </PrivetRoutes>
+        ),
+      },
       {
         path: "/browseTasks",
         loader: () => fetch("http://localhost:3000/tasks"),
@@ -37,6 +48,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myPostedTask",
+        loader: () => fetch("http://localhost:3000/tasks"),
         element: (
           <PrivetRoutes>
             <MyTask></MyTask>
