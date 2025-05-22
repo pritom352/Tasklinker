@@ -8,6 +8,7 @@ import MyTask from "../Page/MyTask";
 import PrivetRoutes from "./PrivetRoutes";
 import Loader from "../Components/Loader";
 import BrowseTasks from "../Page/BrowseTasks";
+import TaskDetails from "../Page/TaskDetails";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -16,6 +17,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
+        loader: () => fetch("http://localhost:3000/tasks/limites"),
         Component: Home,
         hydrateFallbackElement: <Loader></Loader>,
       },
@@ -26,6 +28,12 @@ export const router = createBrowserRouter([
         path: "/browseTasks",
         loader: () => fetch("http://localhost:3000/tasks"),
         Component: BrowseTasks,
+      },
+      {
+        path: "/taskDetails/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/tasks/${params.id}`),
+        Component: TaskDetails,
       },
       {
         path: "/myPostedTask",

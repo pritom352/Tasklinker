@@ -4,7 +4,7 @@ import AllTask from "../Components/AllTask";
 
 const BrowseTasks = () => {
   const tasks = useLoaderData();
-  //   console.log(tasks);
+  console.log(tasks);
 
   return (
     <div>
@@ -14,10 +14,8 @@ const BrowseTasks = () => {
       <div className="divider mb-20"></div>
       <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 mx-10 shadow-2xl">
         <table className="table">
-          {/* head */}
           <thead>
             <tr>
-              {/* <th></th> */}
               <th>no</th>
               <th>Task Name</th>
               <th>Category</th>
@@ -27,7 +25,7 @@ const BrowseTasks = () => {
           </thead>
           <tbody>
             {tasks.map((task, index) => (
-              <AllTask task={task} index={index}></AllTask>
+              <AllTask task={task} key={task._id} index={index}></AllTask>
             ))}
           </tbody>
         </table>
