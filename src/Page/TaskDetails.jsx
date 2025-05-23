@@ -6,8 +6,8 @@ const TaskDetails = () => {
   const { budget, category, deadline, descriptionry, task } = taskDetails;
   return (
     <div className="mt-15">
-      <h1 className=" text-5xl font-bold italic text-center">
-        Task <span className=" text-blue-500">Details</span>
+      <h1 className=" text-2xl md:text-3xl lg:text-5xl font-bold italic text-center text-blue-500">
+        Task <span className=" text-black">Details</span>
       </h1>
       <div className="  p-6 rounded-2xl shadow-2xl space-y-7 mt-10">
         <div className=" flex justify-between">

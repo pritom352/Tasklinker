@@ -18,9 +18,7 @@ const AuthProvider = ({ children }) => {
 
   const [loader, setLoader] = useState(false);
   console.log(user);
-  // console.log(user.email);
 
-  // const data = "hello workd";
   const register = (email, password) => {
     setLoader(false);
     return createUserWithEmailAndPassword(auth, email, password);
@@ -36,7 +34,6 @@ const AuthProvider = ({ children }) => {
   const logOut = () => {
     setLoader(false);
     return signOut(auth);
-    // return "hello world";
   };
   const updateUser = (updateItem) => {
     setLoader(false);

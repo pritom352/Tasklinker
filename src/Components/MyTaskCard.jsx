@@ -19,11 +19,10 @@ const MyTaskCard = ({ data, index, setMyData, myData }) => {
         })
           .then((res) => res.json())
           .then((result) => {
-            // console.log("after delete", data);
             if (result.deletedCount) {
               Swal.fire({
                 title: "Deleted!",
-                text: "Your file has been deleted.",
+                text: "Your task has been deleted.",
                 icon: "success",
               });
               const newData = myData.filter((data) => data._id !== id);

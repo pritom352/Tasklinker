@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router";
 
 const AllTask = ({ task, index }) => {
-  console.log(task);
   return (
     <tr>
       <td>{index + 1}</td>

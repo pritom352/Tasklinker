@@ -16,7 +16,14 @@ const Register = () => {
     const email = e.target.email.value;
     const password = e.target.currentPassword.value;
     const photo = e.target.photoURL.value;
-    // console.log(email, password);
+    const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (passwordRegExp.test(password) === false) {
+      toast(
+        "Password must be at least Six characters includeing  one upper and lower case."
+      );
+      return;
+    }
+
     register(email, password)
       .then((userCredential) => {
         // Signed up
@@ -31,11 +38,11 @@ const Register = () => {
         navigate("/");
 
         toast("Login successful!");
+
         console.log(users);
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         toast(`${errorMessage}`);
         // ..
@@ -101,23 +108,6 @@ const Register = () => {
                 className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
                 placeholder="Password"
               />
-              {/* {show ? (
-                <button
-                  type="button"
-                  onClick={() => setShow(!show)}
-                  className=" absolute top-3.5 right-3 z-50"
-                >
-                  <IoMdEyeOff size={15} />
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  // onClick={() => setShow(!show)}
-                  className=" absolute top-3.5 right-3 z-50"
-                >
-                  <FaEye size={15} />
-                </button>
-              )} */}
             </div>
 
             <button className="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-indigo-600 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group w-full mt-2">
@@ -161,7 +151,6 @@ const Register = () => {
           </form>
           <button
             onClick={handleGoogleLogin}
-            // onClick={handelGoogleLogin}
             className=" btn   gap-3 rounded-md  bg-black text-white  font-semibold py-2.5 hover:bg-blue-400 hover:border-none hover:font-bold "
           >
             <FaGoogle size={24} /> Login With Google Login

@@ -9,15 +9,16 @@ import PrivetRoutes from "./PrivetRoutes";
 import Loader from "../Components/Loader";
 import BrowseTasks from "../Page/BrowseTasks";
 import TaskDetails from "../Page/TaskDetails";
+import ErrorPage from "../Page/ErrorPage";
 
 import { AuthContext } from "../provider/AuthContext";
 import UpdateTask from "../Page/UpdateTask";
 
-// const { user } = useContext(AuthContext);
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
+    errorElement: <ErrorPage></ErrorPage>,
     hydrateFallbackElement: <Loader></Loader>,
     children: [
       {
@@ -39,17 +40,25 @@ export const router = createBrowserRouter([
       {
         path: "/browseTasks",
         loader: () => fetch("http://localhost:3000/tasks"),
+        hydrateFallbackElement: <Loader></Loader>,
         Component: BrowseTasks,
       },
       {
         path: "/taskDetails/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/tasks/${params.id}`),
-        Component: TaskDetails,
+        hydrateFallbackElement: <Loader></Loader>,
+
+        element: (
+          <PrivetRoutes>
+            <TaskDetails></TaskDetails>
+          </PrivetRoutes>
+        ),
       },
       {
         path: "/myPostedTask",
         loader: () => fetch("http://localhost:3000/tasks"),
+        hydrateFallbackElement: <Loader></Loader>,
         element: (
           <PrivetRoutes>
             <MyTask></MyTask>
@@ -60,7 +69,12 @@ export const router = createBrowserRouter([
         path: "/updateTask/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/tasks/${params.id}`),
-        Component: UpdateTask,
+        hydrateFallbackElement: <Loader></Loader>,
+        element: (
+          <PrivetRoutes>
+            <UpdateTask></UpdateTask>
+          </PrivetRoutes>
+        ),
       },
     ],
   },

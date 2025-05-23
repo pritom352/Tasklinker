@@ -32,7 +32,6 @@ const Login = () => {
       .catch((error) => {
         const errorMessage = error.message;
         toast(`${errorMessage}`);
-        // ...
       });
   };
   return (
@@ -61,7 +60,6 @@ const Login = () => {
             <a className="link link-hover">Forgot password?</a>
           </div>
 
-          {/* <button className="btn btn-neutral mt-4">Login</button> */}
           <button
             type="submit"
             className="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-indigo-600 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group w-full mt-2"

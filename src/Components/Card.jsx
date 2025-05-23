@@ -30,18 +30,3 @@ const Card = ({ task }) => {
 };
 
 export default Card;
-// budget
-// :
-// "6"
-// category
-// :
-// "Web Development"
-// deadline
-// :
-// "2025-05-10"
-// descriptionry
-// :
-// "werwerfwedrfw"
-// task
-// :
-// "protom"
