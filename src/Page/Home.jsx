@@ -17,7 +17,7 @@ const Home = () => {
         setTextimonials(data);
       });
   }, []);
-  console.log(tasks);
+  // console.log(tasks);
   return (
     <div>
       <Banner></Banner>

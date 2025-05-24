@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const UpdateTask = () => {
   const upDateTask = useLoaderData();
-  console.log(upDateTask);
+  // console.log(upDateTask);
   const { user } = useContext(AuthContext);
   const handleUpdateTask = (e) => {
     e.preventDefault();
@@ -24,16 +24,19 @@ const UpdateTask = () => {
       budget,
       email,
     };
-    fetch(`http://localhost:3000/tasks/${upDateTask._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(Task),
-    })
+    fetch(
+      `https://assignment-10-server-one-orcin.vercel.app/tasks/${upDateTask._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(Task),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
 
         if (data.modifiedCount) {
           Swal.fire({
@@ -42,7 +45,7 @@ const UpdateTask = () => {
             draggable: true,
           });
         }
-        console.log(data);
+        // console.log(data);
       });
   };
   return (

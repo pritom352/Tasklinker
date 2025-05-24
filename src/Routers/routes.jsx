@@ -23,7 +23,10 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch("http://localhost:3000/tasks/limites"),
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-one-orcin.vercel.app/tasks/limites"
+          ),
         Component: Home,
         hydrateFallbackElement: <Loader></Loader>,
       },
@@ -39,14 +42,17 @@ export const router = createBrowserRouter([
       },
       {
         path: "/browseTasks",
-        loader: () => fetch("http://localhost:3000/tasks"),
+        loader: () =>
+          fetch("https://assignment-10-server-one-orcin.vercel.app/tasks"),
         hydrateFallbackElement: <Loader></Loader>,
         Component: BrowseTasks,
       },
       {
         path: "/taskDetails/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/tasks/${params.id}`),
+          fetch(
+            `https://assignment-10-server-one-orcin.vercel.app/tasks/${params.id}`
+          ),
         hydrateFallbackElement: <Loader></Loader>,
 
         element: (
@@ -57,7 +63,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myPostedTask",
-        loader: () => fetch("http://localhost:3000/tasks"),
+        loader: () =>
+          fetch("https://assignment-10-server-one-orcin.vercel.app/tasks"),
         hydrateFallbackElement: <Loader></Loader>,
         element: (
           <PrivetRoutes>
@@ -68,7 +75,9 @@ export const router = createBrowserRouter([
       {
         path: "/updateTask/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/tasks/${params.id}`),
+          fetch(
+            `https://assignment-10-server-one-orcin.vercel.app/tasks/${params.id}`
+          ),
         hydrateFallbackElement: <Loader></Loader>,
         element: (
           <PrivetRoutes>

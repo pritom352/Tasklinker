@@ -3,7 +3,7 @@ import ReviewCard from "./ReviewCard";
 import Marquee from "react-fast-marquee";
 
 const Reviews = ({ textimonials }) => {
-  console.log(textimonials);
+  // console.log(textimonials);
 
   return (
     <div className="mt-25">

@@ -9,9 +9,9 @@ const Register = () => {
     useContext(AuthContext);
   const navigate = useNavigate();
 
-  console.log(register);
+  // console.log(register);
   const handleRegister = (e) => {
-    e.preventDefault(), console.log("helo");
+    e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.currentPassword.value;
@@ -25,22 +25,21 @@ const Register = () => {
     }
 
     register(email, password)
-      .then((userCredential) => {
-        // Signed up
-        const users = userCredential.user;
+      .then((result) => {
+        const users = result.user;
+
         updateUser({ displayName: name, photoURL: photo })
-          .then(setUser({ ...user, displayName: name, photoURL: photo }))
+          .then(() => {
+            setUser({ ...users, displayName: name, photoURL: photo });
+          })
           .catch((error) => {
             toast(error);
-            setUser(user);
+            setUser(users);
           });
 
         navigate("/");
 
-        toast("Login successful!");
-
-        console.log(users);
-        // ...
+        // toast("Login successful!");
       })
       .catch((error) => {
         const errorMessage = error.message;

@@ -14,7 +14,7 @@ const MyTaskCard = ({ data, index, setMyData, myData }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/tasks/${id}`, {
+        fetch(`https://assignment-10-server-one-orcin.vercel.app/tasks/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

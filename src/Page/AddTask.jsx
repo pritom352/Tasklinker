@@ -21,7 +21,7 @@ const AddTask = () => {
       budget,
       email,
     };
-    fetch("http://localhost:3000/tasks", {
+    fetch("https://assignment-10-server-one-orcin.vercel.app/tasks", {
       method: "POST",
       headers: {
         "content-type": "application/json",
