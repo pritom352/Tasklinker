@@ -63,17 +63,18 @@ const AddTask = () => {
 
           <div className="w-full">
             <label className="label font-bold">Category</label>
-
             <select
-              className="select validator  border-0 border-b-2  rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
               name="Category"
+              required
+              defaultValue=""
+              className="select validator border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
             >
-              <option disabled selected></option>
-              <option>Web Development</option>
-              <option>Design</option>
-              <option>Writing</option>
-              <option>Opera</option>
-              <option>Marketing</option>
+              <option value="" disabled></option>
+              <option value="Web Development">Web Development</option>
+              <option value="Design">Design</option>
+              <option value="Writing">Writing</option>
+              <option value="Opera">Opera</option>
+              <option value="Marketing">Marketing</option>
             </select>
             <p className="validator-hint">Required</p>
           </div>
@@ -83,6 +84,7 @@ const AddTask = () => {
 
           <textarea
             name="Description"
+            required
             className="textarea  border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
             placeholder="Description"
           ></textarea>
@@ -94,6 +96,7 @@ const AddTask = () => {
             <input
               type="date"
               name="Deadline"
+              required
               className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
               placeholder="Description"
             />

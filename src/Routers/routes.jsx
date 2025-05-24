@@ -11,7 +11,6 @@ import BrowseTasks from "../Page/BrowseTasks";
 import TaskDetails from "../Page/TaskDetails";
 import ErrorPage from "../Page/ErrorPage";
 
-import { AuthContext } from "../provider/AuthContext";
 import UpdateTask from "../Page/UpdateTask";
 
 export const router = createBrowserRouter([

@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const UpdateTask = () => {
   const upDateTask = useLoaderData();
-  // console.log(upDateTask);
+
   const { user } = useContext(AuthContext);
   const handleUpdateTask = (e) => {
     e.preventDefault();
@@ -36,8 +36,6 @@ const UpdateTask = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
-
         if (data.modifiedCount) {
           Swal.fire({
             title: "Task update successfully",
@@ -45,7 +43,6 @@ const UpdateTask = () => {
             draggable: true,
           });
         }
-        // console.log(data);
       });
   };
   return (
@@ -93,7 +90,8 @@ const UpdateTask = () => {
 
           <textarea
             name="Description"
-            defaultValue={upDateTask.description}
+            required
+            defaultValue={upDateTask.descriptionry}
             className="textarea  border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
             placeholder="Description"
           ></textarea>
@@ -105,6 +103,7 @@ const UpdateTask = () => {
             <input
               type="date"
               name="Deadline"
+              required
               defaultValue={upDateTask.deadline}
               className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
               placeholder="Description"

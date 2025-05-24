@@ -45,6 +45,7 @@ const Login = () => {
 
           <input
             type="email"
+            required
             name="email"
             className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
             placeholder="Email"
@@ -52,6 +53,7 @@ const Login = () => {
           <label className="label">Password</label>
           <input
             type="current-password"
+            required
             name="password"
             className="input  border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
             placeholder="Password"

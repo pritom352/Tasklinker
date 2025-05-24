@@ -8,8 +8,6 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [show, setShow] = useState(false);
 
-  // console.log(show);
-
   const handleLogout = () => {
     logOut()
       .then(() => {})
@@ -86,9 +84,8 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <label className="swap  mr-5 swap-rotate">
-          {/* this hidden checkbox controls the state */}
           <input
-            onClick={handleToggle}
+            onChange={handleToggle}
             type="checkbox"
             checked={theme === "light" ? false : true}
           />

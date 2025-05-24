@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Banner from "../Components/Banner";
 import { useLoaderData } from "react-router";
 import Card from "../Components/Card";
-import CountUp from "react-countup";
+
 import Coutnup from "../Components/Coutnup";
 import Reviews from "../Components/Reviews";
 
@@ -17,7 +17,7 @@ const Home = () => {
         setTextimonials(data);
       });
   }, []);
-  // console.log(tasks);
+
   return (
     <div>
       <Banner></Banner>

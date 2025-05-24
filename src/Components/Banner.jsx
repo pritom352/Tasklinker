@@ -11,7 +11,7 @@ const Banner = () => {
         <img src={img_2} className="w-full" />
         <div className="  absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-center">
           <h1 className=" text-xl md:text-2xl lg:text-3xl text-shadow-lg text-blue-500 italic font-bold">
-            <span className="text-black">Your Work, Our Freelancers –</span>
+            <span className="text-black">Your Work, Our Freelancers – </span>
             <Typewriter
               words={[
                 "Post a Task",

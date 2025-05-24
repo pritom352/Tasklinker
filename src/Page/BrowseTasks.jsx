@@ -4,7 +4,6 @@ import AllTask from "../Components/AllTask";
 
 const BrowseTasks = () => {
   const tasks = useLoaderData();
-  // console.log(tasks);
 
   return (
     <div>

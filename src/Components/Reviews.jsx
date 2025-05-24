@@ -3,8 +3,6 @@ import ReviewCard from "./ReviewCard";
 import Marquee from "react-fast-marquee";
 
 const Reviews = ({ textimonials }) => {
-  // console.log(textimonials);
-
   return (
     <div className="mt-25">
       <h1 className=" mb-8 text-2xl md:text-3xl lg:text-4xl italic font-bold text-center text-shadow-2xs">

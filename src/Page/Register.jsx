@@ -5,11 +5,10 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../provider/AuthContext";
 
 const Register = () => {
-  const { register, googleLogin, updateUser, setUser, user } =
+  const { register, googleLogin, updateUser, setUser } =
     useContext(AuthContext);
   const navigate = useNavigate();
 
-  // console.log(register);
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -39,12 +38,11 @@ const Register = () => {
 
         navigate("/");
 
-        // toast("Login successful!");
+        toast("Login successful!");
       })
       .catch((error) => {
         const errorMessage = error.message;
         toast(`${errorMessage}`);
-        // ..
       });
   };
   const handleGoogleLogin = () => {
@@ -57,7 +55,6 @@ const Register = () => {
       .catch((error) => {
         const errorMessage = error.message;
         toast(`${errorMessage}`);
-        // ...
       });
   };
   return (
