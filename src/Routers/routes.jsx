@@ -12,6 +12,11 @@ import TaskDetails from "../Page/TaskDetails";
 import ErrorPage from "../Page/ErrorPage";
 
 import UpdateTask from "../Page/UpdateTask";
+import AboutUs from "../Page/AboutUs";
+import Contact from "../Page/Contact";
+import Support from "../Page/Support";
+import DashboardLayout from "../Layout/DashboardLayout";
+import Overview from "../Page/Overview";
 
 export const router = createBrowserRouter([
   {
@@ -29,16 +34,23 @@ export const router = createBrowserRouter([
         Component: Home,
         hydrateFallbackElement: <Loader></Loader>,
       },
+
       { path: "/login", Component: Login },
       { path: "/register", Component: Register },
+
       {
-        path: "/addTask",
-        element: (
-          <PrivetRoutes>
-            <AddTask></AddTask>
-          </PrivetRoutes>
-        ),
+        path: "/aboutUs",
+        Component: AboutUs,
       },
+      {
+        path: "/contact",
+        Component: Contact,
+      },
+      {
+        path: "/support",
+        Component: Support,
+      },
+
       {
         path: "/browseTasks",
         loader: () =>
@@ -60,8 +72,22 @@ export const router = createBrowserRouter([
           </PrivetRoutes>
         ),
       },
+    ],
+  },
+  {
+    path: "/dashbord",
+    element: (
+      <PrivetRoutes>
+        <DashboardLayout></DashboardLayout>
+      </PrivetRoutes>
+    ),
+    children: [
       {
-        path: "/myPostedTask",
+        index: true,
+        Component: Overview,
+      },
+      {
+        path: "/dashbord/myPostedTask",
         loader: () =>
           fetch("https://assignment-10-server-one-orcin.vercel.app/tasks"),
         hydrateFallbackElement: <Loader></Loader>,
@@ -71,8 +97,17 @@ export const router = createBrowserRouter([
           </PrivetRoutes>
         ),
       },
+
       {
-        path: "/updateTask/:id",
+        path: "/dashbord/addTask",
+        element: (
+          <PrivetRoutes>
+            <AddTask></AddTask>
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: "/dashbord/updateTask/:id",
         loader: ({ params }) =>
           fetch(
             `https://assignment-10-server-one-orcin.vercel.app/tasks/${params.id}`

@@ -5,6 +5,7 @@ import Card from "../Components/Card";
 
 import Coutnup from "../Components/Coutnup";
 import Reviews from "../Components/Reviews";
+import BlogSection from "../Components/BlogSection";
 
 const Home = () => {
   const tasks = useLoaderData();
@@ -21,17 +22,18 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
-      <div className=" my-16">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl text-blue-500 font-bold text-center italic mb-10">
-          Urgent <span className="text-black">Tasks</span>
+      <div className=" mt-20">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl  font-bold text-center italic mb-10">
+          <span className="text-blue-500">Urgent</span> Tasks
         </h1>
-        <div className=" grid md:grid-cols-2 lg:grid-cols-3  gap-10">
+        <div className=" grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-10">
           {tasks.map((task) => (
             <Card key={task._id} task={task}></Card>
           ))}
         </div>
       </div>
       <Reviews textimonials={textimonials}></Reviews>
+      <BlogSection></BlogSection>
       <Coutnup></Coutnup>
     </div>
   );

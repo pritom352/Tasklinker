@@ -6,7 +6,7 @@ import img_3 from "../assets/high-quality-cartoon-office-worker-desk-located-rig
 
 const Banner = () => {
   return (
-    <div className="carousel    w-full h-[150px] md:h-[250px] lg:h-[550px] mt-15 rounded-2xl">
+    <div className="carousel    w-full h-[150px] md:h-[250px] lg:h-[400px] mt-20 rounded-2xl">
       <div id="slide1" className="carousel-item relative w-full">
         <img src={img_2} className="w-full" />
         <div className="  absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-center">

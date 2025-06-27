@@ -1,91 +1,103 @@
 import React from "react";
-import { FaFacebookF, FaGithub } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
-import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaGithub,
+  FaLinkedinIn,
+  FaEnvelope,
+  FaPhoneAlt,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
+import { Link } from "react-router";
+import logo from "../assets/TaskLinker Logo Design.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-10 px-4 mt-20">
-      <div className="flex flex-col md:flex-row justify-between items-center gap-8 flex-wrap">
+    <footer className="bg-gray-900 text-white py-10 px-4 ">
+      <div className="max-w-6/7  mx-auto flex flex-col md:flex-row justify-between gap-8 flex-wrap">
+        {/* Logo and About */}
         <div className="flex-1 min-w-[250px]">
-          <h2 className="text-3xl font-bold italic mb-4">
-            <span className="text-blue-500">Task</span>Linker
-          </h2>
+          <img
+            src={logo}
+            className="w-[100px] h-[40px] md:w-[150px] md:h-[50px] "
+            alt=""
+          />
           <p className="text-sm text-gray-400">
-            Discover your city's vibe. Find local events, reserve seats, and
-            enjoy life together.
+            TaskLinker is a freelance task marketplace where you can post or
+            pick up tasks. Connect, collaborate, and get work done efficiently.
           </p>
         </div>
 
+        {/* Useful Links */}
         <div className="flex-1 min-w-[250px]">
-          <div className="flex flex-col items-center justify-center">
-            <h3 className="text-lg font-semibold mb-3">Useful Links</h3>
-            <ul className="space-y-2 text-gray-300">
-              <li>
-                <a href="/terms" className="hover:text-blue-400">
-                  Terms & Conditions
-                </a>
-              </li>
-              <li>
-                <a href="/privacy" className="hover:text-blue-400">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="/about" className="hover:text-blue-400">
-                  About Us
-                </a>
-              </li>
-            </ul>
-          </div>
+          <h3 className="text-lg font-semibold mb-4">Useful Links</h3>
+          <ul className="space-y-2 text-gray-300">
+            <li>
+              <Link className="hover:text-blue-500" to="/">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:text-blue-500" to="/aboutUs">
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:text-blue-500" to="/contact">
+                Contact
+              </Link>
+            </li>
+
+            <li>
+              <Link className="hover:text-blue-500" to="/support">
+                Support
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:text-blue-500" to="/browseTasks">
+                Browse Tasks
+              </Link>
+            </li>
+
+            <li>
+              <Link className="hover:text-blue-500" to="/dashbord">
+                Dashbord
+              </Link>
+            </li>
+          </ul>
         </div>
 
+        {/* Social Links */}
         <div className="flex-1 min-w-[250px]">
-          <div className="flex flex-col items-center">
-            <h3 className="text-lg font-semibold mb-3">Contact Us</h3>
-            <ul className="space-y-2 text-gray-300">
-              <li className="flex items-center gap-2">
-                <FaEnvelope /> pritomproshad@gmail.com
-              </li>
-              <li className="flex items-center gap-2">
-                <FaPhoneAlt /> +8801758665178
-              </li>
-              <li className="flex items-center gap-2">
-                <FaMapMarkerAlt /> Naogaon, BD
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="flex-1 min-w-[250px]">
-          <div className="flex flex-col items-center">
-            <h3 className="text-lg font-semibold mb-3">Follow Us</h3>
-            <div className="flex gap-6">
-              <a
-                href="https://facebook.com"
-                className="hover:text-blue-400 flex items-center gap-2"
-              >
-                <FaFacebookF size={20} /> Facebook
-              </a>
-              <a
-                href="https://github.com"
-                className="hover:text-blue-400 flex items-center gap-2"
-              >
-                <FaGithub size={20} /> GitHub
-              </a>
-              <a
-                href="https://twitter.com"
-                className="hover:text-blue-400 flex items-center gap-2"
-              >
-                <FaSquareXTwitter size={20} /> Twitter
-              </a>
-            </div>
+          <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
+          <div className="flex flex-col gap-3 text-gray-300">
+            <a
+              href="https://www.facebook.com/pritom.proshad.2024"
+              className="hover:text-blue-400 flex items-center gap-2"
+              target="_blank"
+            >
+              <FaFacebookF size={20} /> Facebook
+            </a>
+            <a
+              href="https://www.linkedin.com/in/pritom-proshad-254330362/"
+              className="hover:text-blue-400 flex items-center gap-2"
+              target="_blank"
+            >
+              <FaLinkedinIn size={20} /> LinkedIn
+            </a>
+            <a
+              href="https://github.com/pritom352"
+              className="hover:text-blue-400 flex items-center gap-2"
+              target="_blank"
+            >
+              <FaGithub size={20} /> GitHub
+            </a>
           </div>
         </div>
       </div>
 
+      {/* Copyright */}
       <div className="border-t border-gray-700 mt-10 pt-4 text-center text-sm text-gray-500">
-        VibeVenue. All rights reserved.
+        © {new Date().getFullYear()} TaskLinker. All rights reserved.
       </div>
     </footer>
   );

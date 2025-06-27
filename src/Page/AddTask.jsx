@@ -41,9 +41,9 @@ const AddTask = () => {
       });
   };
   return (
-    <div className=" md:mx-10 my-15  lg:mx-30 lg:my-20  ">
-      <h1 className=" text-2xl md:text-3xl lg:text-5xl mb-8 font-bold italic text-center text-blue-500">
-        Add <span className=" text-black">Task</span>
+    <div className=" bg-base-200 md:mx-10 my-20  lg:mx-30 lg:my-20  ">
+      <h1 className=" text-2xl  md:text-3xl lg:text-5xl mb-8 font-bold italic text-center ">
+        <span className="text-blue-500">Add</span> Task
       </h1>
       <form
         onSubmit={handleAddTask}

@@ -9,13 +9,13 @@ const MyTask = () => {
   const myAllData = myUplodes.filter((data) => data.email == user.email);
   const [myData, setMyData] = useState(myAllData);
   return (
-    <div>
-      <h1 className=" text-3xl md:text-4xl lg:text-5xl text-blue-500 italic font-bold mt-10 mb-2 text-center">
-        My Postde <span className=" text-black">Task</span>
+    <div className="my-20">
+      <h1 className=" text-3xl md:text-4xl lg:text-5xl  italic font-bold  mb-2 text-center">
+        <span className="text-blue-500">My Postde</span> Task
       </h1>
-      <div className="divider mb-20"></div>
+      <div className="divider  mb-15 "></div>
       <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 mx-10 shadow-2xl">
-        <table className="table">
+        <table className="table bg-base-200">
           <thead>
             <tr>
               <th className=" text-center">no</th>
